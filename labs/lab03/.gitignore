@@ -1,0 +1,26 @@
+# Compiled binaries
+apps/buggy_app
+apps/leaky_app
+apps/leaky_app_fixed
+apps/leaky_app_arm
+apps/leaky_app_arm_measure
+apps/perf_target
+apps/perf_target_arm
+
+# Binary profiling data
+*.data
+*.data.old
+
+# Initramfs/build artifacts
+*.cpio
+*.cpio.gz
+
+# Downloaded packages
+*.deb
+
+# Temporary/debug files
+*_partial.txt
+*_before_fopen_fix.c
+
+# Generated PDF report
+bao_cao/*.pdf
