@@ -1,0 +1,163 @@
+logging debugredirect:  off: Debug output will go to both the screen and the log file.
+logging enabled:  on: Logging is enabled.
+logging file:  The current logfile is "/home/wis/embedded_lab3/logs/gdb_session_full.txt".
+logging overwrite:  on: Logging overwrites the log file.
+logging redirect:  off: Output will go to both the screen and the log file.
+The target architecture is set to "arm".
+Remote debugging using localhost:1234
+0x00010340 in _start ()
+Last stopped for thread 1 (Thread 73.73).
+	`/home/wis/embedded_lab3/apps/buggy_app', file type elf32-littlearm.
+	Entry point: 0x10340
+	0x00010114 - 0x00010138 is .note.gnu.build-id
+	0x00010138 - 0x00010158 is .note.ABI-tag
+	0x00010158 - 0x00010168 is .rel.dyn
+	0x00010168 - 0x00010174 is .init
+	0x00010174 - 0x00010194 is .iplt
+	0x000101c0 - 0x00047658 is .text
+	0x00047658 - 0x00047660 is .fini
+	0x00047660 - 0x0005dda4 is .rodata
+	0x0005dda4 - 0x0005df8c is .ARM.extab
+	0x0005df8c - 0x0005e51c is .ARM.exidx
+	0x0005e51c - 0x0005e520 is .eh_frame
+	0x0005fdd4 - 0x0005fde0 is .tdata
+	0x0005fde0 - 0x0005fe00 is .tbss
+	0x0005fde0 - 0x0005fde4 is .init_array
+	0x0005fde4 - 0x0005fde8 is .fini_array
+	0x0005fde8 - 0x00062000 is .data.rel.ro
+	0x00062000 - 0x00062228 is .got
+	0x00062228 - 0x00062ff8 is .data
+	0x00062ff8 - 0x00065a08 is .bss
+	0x76fff0d4 - 0x76fff100 is .hash in system-supplied DSO at 0x76fff000
+	0x76fff100 - 0x76fff160 is .dynsym in system-supplied DSO at 0x76fff000
+	0x76fff160 - 0x76fff1cf is .dynstr in system-supplied DSO at 0x76fff000
+	0x76fff1d0 - 0x76fff1dc is .gnu.version in system-supplied DSO at 0x76fff000
+	0x76fff1dc - 0x76fff214 is .gnu.version_d in system-supplied DSO at 0x76fff000
+	0x76fff214 - 0x76fff268 is .note in system-supplied DSO at 0x76fff000
+	0x76fff268 - 0x76fff2f0 is .dynamic in system-supplied DSO at 0x76fff000
+	0x76fff2f0 - 0x76fff330 is .ARM.exidx in system-supplied DSO at 0x76fff000
+	0x76fff330 - 0x76fff8ac is .text in system-supplied DSO at 0x76fff000
+	0x76fff8ac - 0x76fff8b8 is .got.plt in system-supplied DSO at 0x76fff000
+Program stopped at 0x10340.
+It stopped with signal SIGTRAP, Trace/breakpoint trap.
+Type "info stack" or "info registers" for more information.
+pc             0x10340             0x10340 <_start>
+sp             0x7efffe90          0x7efffe90
+lr             0x0                 0
+Breakpoint 1 at 0x10502: file buggy_app.c, line 43.
+Breakpoint 2 at 0x1044a: file buggy_app.c, line 8.
+Breakpoint 3 at 0x10494: file buggy_app.c, line 20.
+Breakpoint 4 at 0x104d4: file buggy_app.c, line 35.
+Num     Type           Disp Enb Address    What
+1       breakpoint     keep y   0x00010502 in main at buggy_app.c:43
+2       breakpoint     keep y   0x0001044a in process_data at buggy_app.c:8
+3       breakpoint     keep y   0x00010494 in create_message at buggy_app.c:20
+4       breakpoint     keep y   0x000104d4 in calculate at buggy_app.c:35
+Continuing.
+
+Breakpoint 1, main () at buggy_app.c:43
+43	{
+#0  main () at buggy_app.c:43
+pc             0x10502             0x10502 <main+6>
+sp             0x7efffd10          0x7efffd10
+lr             0x10649             67145
+38	
+39	    return result;
+40	}
+41	
+42	int main(void)
+43	{
+44	    printf("=== LAB03 Debug Target ===\n");
+45	
+46	    int arr[5] = {10, 20, 30, 40, 50};
+47	
+Continuing.
+
+Breakpoint 2, process_data (data=0x7efffd18, len=5) at buggy_app.c:8
+8	    int sum = 0;
+$1 = 5
+$2 = {10, 20, 30, 40, 50}
+#0  process_data (data=0x7efffd18, len=5) at buggy_app.c:8
+#1  0x00010544 in main () at buggy_app.c:49
+Breakpoint 5 at 0x10454: file buggy_app.c, line 11.
+Continuing.
+
+Breakpoint 5, process_data (data=0x7efffd18, len=5) at buggy_app.c:11
+11	        sum += data[i];
+$3 = 5
+$4 = 5
+$5 = 150
+$6 = (int *) 0x7efffd18
+$7 = (int *) 0x7efffd2c
+#0  process_data (data=0x7efffd18, len=5) at buggy_app.c:11
+#1  0x00010544 in main () at buggy_app.c:49
+i = 5
+sum = 150
+pc             0x10454             0x10454 <process_data+20>
+sp             0x7efffcf8          0x7efffcf8
+lr             0x10545             66885
+Num     Type           Disp Enb Address    What
+1       breakpoint     keep y   0x00010502 in main at buggy_app.c:43
+	breakpoint already hit 1 time
+2       breakpoint     keep y   0x0001044a in process_data at buggy_app.c:8
+	breakpoint already hit 1 time
+3       breakpoint     keep y   0x00010494 in create_message at buggy_app.c:20
+4       breakpoint     keep y   0x000104d4 in calculate at buggy_app.c:35
+5       breakpoint     keep n   0x00010454 in process_data at buggy_app.c:11
+	stop only if i == 5 (host evals)
+	breakpoint already hit 1 time
+Continuing.
+
+Breakpoint 3, create_message (text=0x47774 "Hello Embedded Linux") at buggy_app.c:20
+20	    char *buf = malloc(strlen(text) + 1);
+A syntax error in expression, near `x/s text
+backtrace'.
+$8 = 0x47774 "Hello Embedded Linux"
+0x47774:	"Hello Embedded Linux"
+#0  create_message (text=0x47774 "Hello Embedded Linux") at buggy_app.c:20
+#1  0x00010558 in main () at buggy_app.c:53
+22	    if (buf == NULL)
+$9 = 0x67da8 ""
+25	    strcpy(buf, text);
+27	    free(buf);
+$10 = 0x67da8 "Hello Embedded Linux"
+0x67da8:	"Hello Embedded Linux"
+29	    return buf;
+$11 = 0x67da8
+#0  create_message (text=0x47774 "Hello Embedded Linux") at buggy_app.c:29
+#1  0x00010558 in main () at buggy_app.c:53
+pc             0x104c0             0x104c0 <create_message+52>
+sp             0x7efffcf8          0x7efffcf8
+lr             0x7                 7
+Num     Type           Disp Enb Address    What
+1       breakpoint     keep y   0x00010502 in main at buggy_app.c:43
+	breakpoint already hit 1 time
+2       breakpoint     keep y   0x0001044a in process_data at buggy_app.c:8
+	breakpoint already hit 1 time
+3       breakpoint     keep n   0x00010494 in create_message at buggy_app.c:20
+	breakpoint already hit 1 time
+4       breakpoint     keep y   0x000104d4 in calculate at buggy_app.c:35
+5       breakpoint     keep n   0x00010454 in process_data at buggy_app.c:11
+	stop only if i == 5 (host evals)
+	breakpoint already hit 1 time
+Continuing.
+
+Breakpoint 4, calculate (a=100000, b=100000) at buggy_app.c:35
+35	    int result = a * b;
+$12 = 100000
+$13 = 100000
+$14 = 10000000000
+#0  calculate (a=100000, b=100000) at buggy_app.c:35
+#1  0x00010584 in main () at buggy_app.c:57
+37	    printf("calculate(%d, %d) = %d\n", a, b, result);
+No symbol "results" in current context.
+$15 = 1410065408
+result = 1410065408
+pc             0x104de             0x104de <calculate+20>
+sp             0x7efffcf8          0x7efffcf8
+lr             0x10585             66949
+logging debugredirect:  off: Debug output will go to both the screen and the log file.
+logging enabled:  on: Logging is enabled.
+logging file:  The current logfile is "/home/wis/embedded_lab3/logs/gdb_session_full.txt".
+logging overwrite:  on: Logging overwrites the log file.
+logging redirect:  off: Output will go to both the screen and the log file.
